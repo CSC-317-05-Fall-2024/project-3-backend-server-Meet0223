@@ -1,7 +1,26 @@
 // Fill this in
 let restaurantData = [
-
+    {
+        "name": "The Food Place",
+        "phone": "(415) 123-4567",
+        "address": "123 Main St, San Francisco, CA 94132",
+        "photo": "https://picsum.photos/150/150"
+    },
+    {
+        "name": "Pizza Heaven",
+        "phone": "(415) 234-5678",
+        "address": "456 Elm St, San Francisco, CA 94132",
+        "photo": "https://picsum.photos/150/150"
+    },
+    {
+        "name": "Sushi Express",
+        "phone": "(415) 345-6789",
+        "address": "789 Pine St, San Francisco, CA 94132",
+        "photo": "https://picsum.photos/150/150"
+    }
 ];
+
+export default { restaurantData };
 
 let lastId = restaurantData.length;
 

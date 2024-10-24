@@ -19,7 +19,7 @@
     <main>
         <section class="restaurants-list">
             <% restaurantData.forEach(restaurant => { %>
-                <div class="restaurant-card">
+                <div class="restaurant-card" data-id="<%= restaurant.id %>">
                     <img src="<%= restaurant.photo %>" alt="Restaurant Photo">
                     <div class="restaurant-info">
                         <h2><%= restaurant.name %></h2>

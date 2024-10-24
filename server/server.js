@@ -1,8 +1,10 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import restaurantDataObj from './data/restaurants.js';
-const restaurantData = restaurantDataObj.restaurantData;
+import { getRestaurants, getRestaurant } from './data/restaurants.js';
+import { backendRouter } from './routes/api.js';
+//import restaurantDataObj from './data/restaurants.js';
+//const restaurantData = restaurantDataObj.restaurantData;
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,6 +15,8 @@ const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.use(express.json());
+
 
 
 
@@ -26,12 +30,26 @@ app.get('/attractions', (req, res) => {
 });
 
 app.get('/restaurants', (req, res) => {
-    res.render('restaurants', { restaurantData }); 
+    const restaurants = getRestaurants(); 
+    res.render('restaurants', { restaurantData: restaurants });  
 });
 
 app.get('/new-restaurant', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'new-restaurants.html'));  
 });
+
+app.get('/restaurants/:id', (req, res) => {
+    const restaurantId = req.params.id;  
+    const restaurant = getRestaurant(restaurantId); 
+    
+    if (restaurant) {
+        res.render('restaurant-details', { restaurant });  
+    } else {
+        res.status(404).send('Restaurant not found');
+    }
+});
+
+app.use('/api', backendRouter);
 
 
 app.listen(PORT, () => {

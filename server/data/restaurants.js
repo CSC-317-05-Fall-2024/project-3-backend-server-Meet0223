@@ -25,7 +25,7 @@ let restaurantData = [
 
 export default { restaurantData };
 
-let lastId = restaurantData.length;
+let lastId = restaurantData.length - 1;
 
 const getNextId = () => {
     lastId += 1;

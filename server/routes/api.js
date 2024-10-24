@@ -11,6 +11,7 @@ router.get('/restaurants', (req, res) => {
 
 // Create a new restaurant
 router.post('/restaurants', (req, res) => {
+    
     console.log('Incoming data:', req.body); 
     
     try {
